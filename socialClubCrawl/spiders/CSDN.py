@@ -5,17 +5,14 @@ from socialClubCrawl.config import *
 
 class CSDNSpider(scrapy.Spider):
     name = 'CSDN'
-    start_urls = ['https://cms-api.csdn.net/v1/web_home/select_content?componentIds=www-blog-recommend']
+    start_urls = [Config.getRecommendUrl(0)]
 
     """爬行页面限制，爬取多少个推荐页面"""
     crawl_page_limit = 100
-    """已经爬行推荐页面个数"""
-    cursor_page_count = 0
 
     def parse(self, response, **kwargs):
-        yield response.follow(self.start_urls[0], callback=self.parseRecommend)
+        self.crawl_page_limit -= 1
 
-    def parseRecommend(self, response):
         result = response.json()
 
         for item in result['data']['www-blog-recommend']['info']:
@@ -54,8 +51,10 @@ class CSDNSpider(scrapy.Spider):
             """获取该用户信息"""
             yield scrapy.Request(Config.getUserInfoUrl(recommend_data_item['user_name']), callback=self.parseUserInfo)
 
+        if self.crawl_page_limit <= 0:
+            return
         """下一页推荐"""
-        yield scrapy.Request(self.start_urls[0], callback=self.parseRecommend)
+        yield response.follow(Config.getRecommendUrl(self.crawl_page_limit))
 
     def parseUserInfo(self, response):
         user_data_item = UserDataItem()
@@ -72,7 +71,8 @@ class CSDNSpider(scrapy.Spider):
 
         """博客访问量"""
         user_data_item['total_views'] = \
-            response.xpath("//div[@class='user-profile-statistics-name' and contains(text(),'总访问量')]/preceding-sibling::div[@class='user-profile-statistics-num']/text()")\
+            response.xpath(
+                "//div[@class='user-profile-statistics-name' and contains(text(),'总访问量')]/preceding-sibling::div[@class='user-profile-statistics-num']/text()") \
                 .get().split('：')[-1].replace(',', '')
 
         """加入CSDN时间"""
