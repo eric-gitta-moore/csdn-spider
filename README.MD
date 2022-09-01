@@ -10,10 +10,6 @@ cd csdn-spider
 # 安装依赖
 pip install -r requirements.txt
 # 开始采集
-# COMIC_PUBLISH_URL 替换成你对应的漫画发布地址
-# CHAPTER_PUBLISH_URL 替换成你对应的章节发布地址
-# PUBLISH_PWD 替换成你对应的发布密码
-# 后续更新的话重新执行下面这一条命令就可以了
 # 注意要配置MongoDB链接
 scrapy crawl CSDN -s MONGO_URI='mongodb://192.168.44.181:27017/'
 ```
