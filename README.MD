@@ -14,7 +14,8 @@ pip install -r requirements.txt
 # CHAPTER_PUBLISH_URL 替换成你对应的章节发布地址
 # PUBLISH_PWD 替换成你对应的发布密码
 # 后续更新的话重新执行下面这一条命令就可以了
-scrapy crawl CSDN
+# 注意要配置MongoDB链接
+scrapy crawl CSDN -s MONGO_URI='mongodb://192.168.44.181:27017/'
 ```
 
 暂停/恢复
