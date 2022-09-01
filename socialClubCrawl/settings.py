@@ -4,18 +4,22 @@ SPIDER_MODULES = ['socialClubCrawl.spiders']
 NEWSPIDER_MODULE = 'socialClubCrawl.spiders'
 # LOGSTATS_INTERVAL = 1
 
-# DUPEFILTER_DEBUG = True
+DUPEFILTER_DEBUG = True
 # SCHEDULER_DEBUG = True
 # LOG_LEVEL = 'INFO'
 
 ROBOTSTXT_OBEY = False
 
-COOKIES_ENABLED = False
+CONCURRENT_REQUESTS = 1
+CONCURRENT_REQUESTS_PER_DOMAIN = 1
+
+# COOKIES_ENABLED = False
 
 TELNETCONSOLE_ENABLED = True
 TELNETCONSOLE_USERNAME = 'scrapy'
 TELNETCONSOLE_PASSWORD = 'scrapy'
 
+# DUPEFILTER_CLASS = 'scrapy.dupefilters.BaseDupeFilter'
 DOWNLOADER_MIDDLEWARES = {
     # 'scrapeops_scrapy.middleware.retry.RetryMiddleware': 550,
     # 'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,

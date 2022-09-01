@@ -5,4 +5,4 @@ class Config:
 
     @staticmethod
     def getRecommendUrl(page):
-        return 'https://cms-api.csdn.net/v1/web_home/select_content?componentIds=www-blog-recommend&p={}'.format(page)
+        return 'https://cms-api.csdn.net/v1/web_home/select_content?componentIds=www-blog-recommend'.format(page)

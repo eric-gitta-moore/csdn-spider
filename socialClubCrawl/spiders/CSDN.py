@@ -54,7 +54,7 @@ class CSDNSpider(scrapy.Spider):
         if self.crawl_page_limit <= 0:
             return
         """下一页推荐"""
-        yield response.follow(Config.getRecommendUrl(self.crawl_page_limit))
+        yield response.follow(Config.getRecommendUrl(self.crawl_page_limit), dont_filter=True)
 
     def parseUserInfo(self, response):
         user_data_item = UserDataItem()
