@@ -39,13 +39,12 @@ class MongoPipeline:
 
 class JsonWriterPipeline:
 
-    def open_spider(self, spider):
-        self.file = open('items.jl', 'w')
-
-    def close_spider(self, spider):
-        self.file.close()
-
     def process_item(self, item, spider):
         line = json.dumps(ItemAdapter(item).asdict()) + "\n"
+        if isinstance(item, RecommendDataItem):
+            self.file = open('article.jl', 'w')
+        elif isinstance(item, UserDataItem):
+            self.file = open('user.jl', 'w')
         self.file.write(line)
+        self.file.close()
         return item

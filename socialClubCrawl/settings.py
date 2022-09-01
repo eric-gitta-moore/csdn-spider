@@ -29,8 +29,8 @@ DOWNLOADER_MIDDLEWARES = {
 }
 
 ITEM_PIPELINES = {
-    'socialClubCrawl.pipelines.MongoPipeline': 300,
-    # 'socialClubCrawl.pipelines.JsonWriterPipeline': 301,
+    # 'socialClubCrawl.pipelines.MongoPipeline': 300,
+    'socialClubCrawl.pipelines.JsonWriterPipeline': 301,
 }
 
 MONGO_URI = 'mongodb://192.168.44.181:27017/'
