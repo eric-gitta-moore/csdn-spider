@@ -1,6 +1,7 @@
 import pymongo
 from itemadapter import ItemAdapter
 from .items import *
+import json
 
 
 class SocialclubcrawlPipeline:
@@ -33,4 +34,18 @@ class MongoPipeline:
             self.db['article'].insert_one(ItemAdapter(item).asdict())
         elif isinstance(item, UserDataItem):
             self.db['user'].insert_one(ItemAdapter(item).asdict())
+        return item
+
+
+class JsonWriterPipeline:
+
+    def open_spider(self, spider):
+        self.file = open('items.jl', 'w')
+
+    def close_spider(self, spider):
+        self.file.close()
+
+    def process_item(self, item, spider):
+        line = json.dumps(ItemAdapter(item).asdict()) + "\n"
+        self.file.write(line)
         return item
