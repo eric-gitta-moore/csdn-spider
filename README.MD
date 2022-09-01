@@ -11,7 +11,7 @@ cd csdn-spider
 pip install -r requirements.txt
 # 开始采集
 # 注意要配置MongoDB链接
-scrapy crawl CSDN -s MONGO_URI='mongodb://192.168.44.181:27017/'
+scrapy crawl CSDN -s MONGO_URI="mongodb://192.168.44.181:27017/"
 ```
 
 暂停/恢复
