@@ -66,49 +66,76 @@ class CSDNSpider(scrapy.Spider):
         user_data_item['user_name'] = response.xpath("//link[@rel='canonical']/@href").get().split('/')[-1]
 
         """码龄"""
-        user_data_item['age'] = response.xpath("//div[@class='person-code-age']/span/text()").get() \
-            .replace('码龄', '').replace('年', '').strip()
+        try:
+            user_data_item['age'] = response.xpath("//div[@class='person-code-age']/span/text()").get() \
+                .replace('码龄', '').replace('年', '').strip()
+        except:
+            pass
 
         """博客访问量"""
-        user_data_item['total_views'] = \
-            response.xpath(
-                "//div[@class='user-profile-statistics-name' and contains(text(),'总访问量')]/preceding-sibling::div[@class='user-profile-statistics-num']/text()") \
-                .get().split('：')[-1].replace(',', '')
+        try:
+            user_data_item['total_views'] = \
+                response.xpath(
+                    "//div[@class='user-profile-statistics-name' and contains(text(),'总访问量')]/preceding-sibling::div[@class='user-profile-statistics-num']/text()") \
+                    .get().split('：')[-1].replace(',', '')
+        except:
+            pass
 
         """加入CSDN时间"""
-        user_data_item['join_time'] = \
-            response.xpath("//span[contains(@class,'user-general-info-key-word')]/text()").get()
+        try:
+            user_data_item['join_time'] = \
+                response.xpath("//span[contains(@class,'user-general-info-key-word')]/text()").get()
+        except:
+            pass
 
         """原创数量"""
-        user_data_item['original_article_count'] = \
-            response.xpath("//div[@class='user-profile-statistics-name' and contains(text(),"
-                           "'原创')]/preceding-sibling::div[@class='user-profile-statistics-num']/text()") \
-                .get().replace(',', '')
+        try:
+            user_data_item['original_article_count'] = \
+                response.xpath("//div[@class='user-profile-statistics-name' and contains(text(),"
+                               "'原创')]/preceding-sibling::div[@class='user-profile-statistics-num']/text()") \
+                    .get().replace(',', '')
+        except:
+            pass
 
         """排名"""
-        user_data_item['rank'] = \
-            response.xpath("//div[@class='user-profile-statistics-name' and contains(text(),"
-                           "'排名')]/preceding-sibling::div[@class='user-profile-statistics-num']/text()") \
-                .get().replace(',', '')
+        try:
+            user_data_item['rank'] = \
+                response.xpath("//div[@class='user-profile-statistics-name' and contains(text(),"
+                               "'排名')]/preceding-sibling::div[@class='user-profile-statistics-num']/text()") \
+                    .get().replace(',', '')
+        except:
+            pass
 
         """粉丝数"""
-        user_data_item['fans'] = \
-            response.xpath("//div[@class='user-profile-statistics-name' and contains(text(),"
-                           "'粉丝')]/preceding-sibling::div[@class='user-profile-statistics-num']/text()") \
-                .get().replace(',', '')
+        try:
+            user_data_item['fans'] = \
+                response.xpath("//div[@class='user-profile-statistics-name' and contains(text(),"
+                               "'粉丝')]/preceding-sibling::div[@class='user-profile-statistics-num']/text()") \
+                    .get().replace(',', '')
+        except:
+            pass
 
         """个人简介"""
-        user_data_item['intro'] = \
-            response.xpath("//p[contains(@class,'introduction-fold')]/text()").get()
+        try:
+            user_data_item['intro'] = \
+                response.xpath("//p[contains(@class,'introduction-fold')]/text()").get()
+        except:
+            pass
 
         """IP归属地"""
-        user_data_item['ip_address'] = response \
-            .xpath("//div[contains(@class,'user-profile-head-address')]//span[@class='address']/text()") \
-            .get().split('：')[1]
+        try:
+            user_data_item['ip_address'] = response \
+                .xpath("//div[contains(@class,'user-profile-head-address')]//span[@class='address']/text()") \
+                .get().split('：')[1]
+        except:
+            pass
 
         """博客介绍"""
-        user_data_item['blog_intro'] = \
-            response.xpath("//h1[contains(@class,'user-profile-title')]/text()").get()
+        try:
+            user_data_item['blog_intro'] = \
+                response.xpath("//h1[contains(@class,'user-profile-title')]/text()").get()
+        except:
+            pass
 
         """头像链接"""
         user_data_item['avatar'] = \

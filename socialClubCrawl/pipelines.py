@@ -42,9 +42,9 @@ class JsonWriterPipeline:
     def process_item(self, item, spider):
         line = json.dumps(ItemAdapter(item).asdict()) + "\n"
         if isinstance(item, RecommendDataItem):
-            self.file = open('article.jl', 'w')
+            self.file = open('article.jl', 'a')
         elif isinstance(item, UserDataItem):
-            self.file = open('user.jl', 'w')
+            self.file = open('user.jl', 'a')
         self.file.write(line)
         self.file.close()
         return item
