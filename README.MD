@@ -1,6 +1,6 @@
 # CSDN推荐列表spider
 
-## 使用方法
+## 爬虫使用方法
 
 开启抓取
 ```shell
@@ -21,4 +21,13 @@ telnet 127.0.0.1 6023
 engine.pause()
 # 恢复
 engine.unpause()
+```
+
+## Jupyter使用方法
+
+```shell
+# 安装依赖
+pip install -r requirements.txt
+# 启动jupyter实验室
+jupyter lab
 ```
