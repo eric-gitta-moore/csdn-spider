@@ -41,11 +41,17 @@ jupyter lab
 `mongodump` 和 `mongorestore` 没有这两个命令的话，请先下载 [database-tools](https://www.mongodb.com/try/download/database-tools)
 
 ## TODO
-- [x] 性别 码龄 创建时间 关系
+- [x] 近期一百页推荐中男女发博客数量
+![](https://tva1.sinaimg.cn/large/008d89Swgy1h5sqdtm13cg30pk0dqwid.gif)
+
+- [x] 码龄、发表博客量、性别关系
+![](https://tva1.sinaimg.cn/large/008d89Swgy1h5spkm5f7wg30uy0l8thy.gif)
 
 - [x] 发布博客量与发布地 地图
+![](https://tva1.sinaimg.cn/large/008d89Swgy1h5spju815pg31h80pohdt.gif)
 
 - [x] tag词云
+![](https://tva1.sinaimg.cn/large/008d89Swgy1h5sqjomcvxg30os0ean21.gif)
 
 - [ ] title词云、desc词云、博客名称词云、博客介绍词云、昵称词云
 
