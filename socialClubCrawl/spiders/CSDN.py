@@ -84,7 +84,7 @@ class CSDNSpider(scrapy.Spider):
         """加入CSDN时间"""
         try:
             user_data_item['join_time'] = \
-                response.xpath("//span[contains(@class,'user-general-info-key-word')]/text()").get()
+                response.xpath("//span[contains(@class,'user-general-info-key-word')]/text()").getall()[-1]
         except:
             pass
 
