@@ -1,6 +1,8 @@
 ### Example user template template
 ### Example user template
 
+.virtual_documents
+
 # IntelliJ project files
 .idea
 *.iml
