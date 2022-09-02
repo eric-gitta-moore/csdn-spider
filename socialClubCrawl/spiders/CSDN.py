@@ -141,4 +141,9 @@ class CSDNSpider(scrapy.Spider):
         user_data_item['avatar'] = \
             response.xpath("//div[contains(@class,'user-profile-avatar')]/img/@src").get()
 
+        """性别"""
+        user_data_item['sex'] = 'male' if \
+            response.xpath("//i[@class='user-gender-male']").get() is not None \
+            else 'famale'
+
         yield user_data_item

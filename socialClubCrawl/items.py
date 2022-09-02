@@ -86,3 +86,6 @@ class UserDataItem(scrapy.Item):
 
     """头像链接"""
     avatar = scrapy.Field()
+
+    """性别"""
+    sex = scrapy.Field()
